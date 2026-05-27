@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="5;url=https://alunapp.cn" />
   <title>AlunApp 已迁移</title>
+
+  <script>
+    setTimeout(() => {
+      const target =
+        "https://alunapp.cn" +
+        window.location.pathname +
+        window.location.search +
+        window.location.hash;
+
+      window.location.replace(target);
+    }, 5000);
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -17,6 +29,7 @@
       min-height: 100vh;
       text-align: center;
     }
+
     .card {
       background: white;
       padding: 40px 28px;
@@ -25,15 +38,18 @@
       max-width: 520px;
       width: 90%;
     }
+
     h1 {
       font-size: 28px;
       margin-bottom: 16px;
     }
+
     p {
       font-size: 16px;
       line-height: 1.7;
       color: #4b5563;
     }
+
     a {
       display: inline-block;
       margin-top: 24px;
@@ -44,6 +60,7 @@
       text-decoration: none;
       font-weight: 600;
     }
+
     .small {
       margin-top: 18px;
       font-size: 13px;
@@ -51,15 +68,33 @@
     }
   </style>
 </head>
+
 <body>
   <div class="card">
     <h1>AlunApp 已迁移到新域名</h1>
+
     <p>
       原域名 <strong>alunapp.asia</strong> 已停止作为主访问地址。<br>
       请使用新的官方网站：
     </p>
-    <a href="https://alunapp.cn">访问 alunapp.cn</a>
-    <p class="small">页面将在 5 秒后自动跳转到新域名。</p>
+
+    <a id="new-link" href="https://alunapp.cn">
+      访问 alunapp.cn
+    </a>
+
+    <p class="small">
+      页面将在 5 秒后自动跳转到对应的新地址。
+    </p>
   </div>
+
+  <script>
+    const target =
+      "https://alunapp.cn" +
+      window.location.pathname +
+      window.location.search +
+      window.location.hash;
+
+    document.getElementById("new-link").href = target;
+  </script>
 </body>
 </html>
