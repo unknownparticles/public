@@ -5,31 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlunApp 已迁移</title>
 
-  <script>
-    const target =
-      "https://alunapp.cn" +
-      window.location.pathname +
-      window.location.search +
-      window.location.hash;
-
-    setTimeout(() => {
-      window.location.replace(target);
-    }, 1800);
-    const oldUrl =
-      "https://alunapp.asia" +
-      window.location.pathname +
-      window.location.search +
-      window.location.hash;
-
-    const newUrl = target;
-
-    document.getElementById("message").innerHTML = `
-      <strong>${oldUrl}</strong><br />
-      已迁移至<br />
-      <strong>${newUrl}</strong>
-  `;
-  </script>
-
   <style>
     * {
       box-sizing: border-box;
@@ -41,6 +16,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 24px;
       background: #ffffff;
       color: #111111;
       font-family:
@@ -48,12 +24,11 @@
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-      padding: 24px;
     }
 
     .container {
       width: 100%;
-      max-width: 520px;
+      max-width: 560px;
     }
 
     .label {
@@ -66,10 +41,10 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(36px, 7vw, 56px);
+      font-size: clamp(38px, 7vw, 58px);
       line-height: 1.02;
+      letter-spacing: -0.05em;
       font-weight: 700;
-      letter-spacing: -0.04em;
     }
 
     .domain {
@@ -78,20 +53,26 @@
     }
 
     p {
-      margin-top: 24px;
-      color: #555;
+      margin-top: 28px;
+      color: #444;
       font-size: 16px;
-      line-height: 1.8;
+      line-height: 1.9;
+      word-break: break-word;
     }
 
-    a.button {
+    strong {
+      color: #111;
+      font-weight: 600;
+    }
+
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-top: 32px;
-      padding: 14px 22px;
+      margin-top: 34px;
+      padding: 14px 24px;
       border-radius: 999px;
-      background: #111;
+      background: #111111;
       color: white;
       text-decoration: none;
       font-size: 15px;
@@ -99,21 +80,14 @@
       transition: opacity .2s ease;
     }
 
-    a.button:hover {
+    .button:hover {
       opacity: .82;
     }
 
-    .path {
+    .footer {
       margin-top: 18px;
       font-size: 13px;
       color: #999;
-      word-break: break-all;
-    }
-
-    .footer {
-      margin-top: 14px;
-      font-size: 13px;
-      color: #aaa;
     }
   </style>
 </head>
@@ -139,16 +113,45 @@
       前往新网站
     </a>
 
-    <div class="path" id="path"></div>
-
     <div class="footer">
-      页面将在约 2 秒后自动跳转
+      页面将在 <span id="countdown">2</span> 秒后自动跳转
     </div>
   </main>
 
   <script>
+    const target =
+      "https://alunapp.cn" +
+      window.location.pathname +
+      window.location.search +
+      window.location.hash;
+
+    const oldUrl =
+      "https://alunapp.asia" +
+      window.location.pathname +
+      window.location.search +
+      window.location.hash;
+
     document.getElementById("link").href = target;
-    document.getElementById("path").textContent = target;
+
+    document.getElementById("message").innerHTML = `
+      <strong>${oldUrl}</strong><br />
+      已迁移至<br />
+      <strong>${target}</strong>
+    `;
+
+    let seconds = 2;
+
+    const countdown = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      seconds -= 1;
+      countdown.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.replace(target);
+      }
+    }, 1000);
   </script>
 </body>
 </html>
