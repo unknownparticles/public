@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -128,11 +129,20 @@
       window.location.search +
       window.location.hash;
 
-    document.getElementById("link").href = target;
+    document.getElementById("title").innerHTML = `
+      AlunApp<br />
+      <span class="domain">
+        已迁移至 alunapp.cn
+      </span>
+    `;
 
     document.getElementById("message").innerHTML = `
-      即将前往<strong>${target}</strong>
+      <strong>${oldUrl}</strong><br />
+      即将前往<br />
+      <strong>${target}</strong>
     `;
+
+    document.getElementById("link").href = target;
 
     let seconds = 2;
 
@@ -147,12 +157,7 @@
         window.location.replace(target);
       }
     }, 1000);
-    document.getElementById("title").innerHTML = `
-    AlunApp<br />
-    <span class="domain">
-      已迁移至 ${target}
-    </span>
-    `;
   </script>
 </body>
 </html>
+```
