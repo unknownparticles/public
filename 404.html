@@ -98,10 +98,7 @@
       Domain Migration
     </div>
 
-    <h1>
-      AlunApp<br />
-      <span class="domain">已迁移至 alunapp.cn</span>
-    </h1>
+    <h1 id="title"></h1>
 
     <p id="message"></p>
 
@@ -134,9 +131,7 @@
     document.getElementById("link").href = target;
 
     document.getElementById("message").innerHTML = `
-      <strong>${oldUrl}</strong><br />
-      已迁移至<br />
-      <strong>${target}</strong>
+      即将前往<strong>${target}</strong>
     `;
 
     let seconds = 2;
@@ -152,6 +147,12 @@
         window.location.replace(target);
       }
     }, 1000);
+    document.getElementById("title").innerHTML = `
+    AlunApp<br />
+    <span class="domain">
+      已迁移至 ${target}
+    </span>
+    `;
   </script>
 </body>
 </html>
